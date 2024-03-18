@@ -19,6 +19,13 @@ jobs:
         chmod +x appimagetool
     - name: Make AppImage
       run: ./appimagetool build/anki.AppDir
+    - name: Release with Notes
+      uses: softprops/action-gh-release@v1
+      with:
+        files: |
+          ./Anki-x86_64.AppImage
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Upload AppImage
       uses: actions/upload-artifact@v1
       with:
